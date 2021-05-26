@@ -8,6 +8,9 @@ tailCounter=0
 gameCounter=0
 winCounter=21
 
+afterEqualMargin=2
+equalCountPosition=0
+
 for((i=0; i<=41; i++))
 do
         ((gameCounter++))
@@ -34,8 +37,19 @@ do
                 break
         elif [ $headCounter -eq $tailCounter ]
         then
+<<<<<<< HEAD
                 echo "Its a Tie"
 		break
+=======
+                equalCountPosition=$gameCounter
+        elif [ $equalCountPosition -eq 0 ]
+        then
+                continue
+        elif [ $gameCounter -gt $equalCountPosition -a $margin -eq $afterEqualMargin ]
+        then
+                break
+
+>>>>>>> UC4
         fi
 done
 
@@ -49,5 +63,8 @@ then
         echo " Winning Margin : $margin "
 fi
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> UC4
