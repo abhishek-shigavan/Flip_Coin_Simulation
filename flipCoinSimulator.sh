@@ -36,11 +36,7 @@ do
         then
                 break
         elif [ $headCounter -eq $tailCounter ]
-        then
-<<<<<<< HEAD
-                echo "Its a Tie"
-		break
-=======
+       	then
                 equalCountPosition=$gameCounter
         elif [ $equalCountPosition -eq 0 ]
         then
@@ -49,7 +45,6 @@ do
         then
                 break
 
->>>>>>> UC4
         fi
 done
 
@@ -63,8 +58,3 @@ then
         echo " Winning Margin : $margin "
 fi
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> UC4
