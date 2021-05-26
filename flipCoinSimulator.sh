@@ -2,23 +2,43 @@
 
 isHead=0
 isTail=1
+
 headCounter=0
 tailCounter=0
+winCounter=21
 
 for((i=0; i<=41; i++))
 do
-        coinSimulator=$(($RANDOM%2))
-
-        if [ $coinSimulator -eq $isHead ]
+        if [ $headCounter -eq $winCounter -o $tailCounter -eq $winCounter ]
         then
-                ((headCounter++))
-                headCounter=$headCounter
+                break
         else
-                ((tailCounter++))
-                tailCounter=$tailCounter
+                coinSimulator=$(($RANDOM%2))
+
+                if [ $coinSimulator -eq $isHead ]
+                then
+                        ((headCounter++))
+                        headCounter=$headCounter
+                else
+                        ((tailCounter++))
+                        tailCounter=$tailCounter
+                fi
+
+                margin=$(($headCounter - $tailCounter))
+                margin=${margin#-}      #if answer is in negative removes negative sign
         fi
 done
 
-echo " Head Won : $headCounter times "
-echo " Tail Won : $tailCounter times "
+if [ $headCounter -eq $tailCounter ]
+then
+        echo " Tie "
+elif [ $headCounter -gt $tailCounter ]
+then
+        echo " Head is the Winner "
+        echo " Winning Margin : $margin "
+else
+        echo " Tail is the Winner "
+        echo " Winning Margin : $margin "
+fi
+
 
